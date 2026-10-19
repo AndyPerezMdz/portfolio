@@ -1,21 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
-
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -39,7 +24,16 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${display.variable} ${mono.variable}`}>
+    <html lang="es">
+      <head>
+        {/* Fuentes por <link> (no next/font): next/font/google falla al compilar en Vercel con Next 16.4 + Turbopack */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

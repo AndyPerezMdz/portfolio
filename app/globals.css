@@ -19,8 +19,8 @@
   --ok: #4cc38a;
   --ok-bg: #12261c;
 
-  --display: var(--font-display), system-ui, sans-serif;
-  --mono: var(--font-mono), ui-monospace, monospace;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
   --gutter: 80px;
 }
 
